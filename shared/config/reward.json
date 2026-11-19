@@ -1,0 +1,5 @@
+{
+  "auto_reward_threshold": 0.95,
+  "memq_write_enabled": true,
+  "note": "memq_write_enabled is ON (Chris confirmed the account 2026-11-10); writes land once the live MemQ session is signed in, otherwise the episode stays in the local ledger with the reason the MemQ account; until then reward episodes go to the local ledger only (shared/runtime/reward-ledger). auto_reward_threshold is the confidence bar (0.95): a run is auto-rewarded only when BOTH factual_confidence and alignment_confidence reach it, all non-negotiable criteria are verified-met, nothing is overclaimed, and intent was declared. Otherwise the episode is held_for_review."
+}

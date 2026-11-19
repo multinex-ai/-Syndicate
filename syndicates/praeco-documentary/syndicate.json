@@ -1,0 +1,205 @@
+{
+  "agent_ids": [
+    "doc-showrunner",
+    "doc-researcher",
+    "doc-story-architect",
+    "doc-footage-scout",
+    "doc-fact-checker",
+    "doc-editor"
+  ],
+  "allowed_hosts_ceiling": [
+    "localhost",
+    "127.0.0.1",
+    "::1",
+    "en.wikipedia.org",
+    "www.loc.gov",
+    "www.archives.gov",
+    "www.nps.gov",
+    "www.si.edu",
+    "www.smithsonianmag.com",
+    "www.britannica.com",
+    "apnews.com",
+    "www.reuters.com",
+    "www.bbc.com",
+    "www.nasa.gov",
+    "science.nasa.gov",
+    "www.noaa.gov",
+    "www.usgs.gov",
+    "ourworldindata.org",
+    "data.worldbank.org",
+    "www.who.int",
+    "images.nasa.gov",
+    "images-api.nasa.gov",
+    "commons.wikimedia.org",
+    "archive.org",
+    "www.pexels.com",
+    "pixabay.com",
+    "images-assets.nasa.gov",
+    "history.nasa.gov",
+    "www.hq.nasa.gov"
+  ],
+  "allowed_tools_ceiling": [
+    "send_message",
+    "list_workers",
+    "list_skills",
+    "read_skill",
+    "read_file",
+    "write_file",
+    "list_files",
+    "run_command",
+    "browser_open",
+    "browser_observe",
+    "browser_click"
+  ],
+  "coordinator_agent_id": "doc-showrunner",
+  "creator_attribution": "Christopher Rijos",
+  "display_name": "Praeco Documentary Unit",
+  "edges": [
+    {
+      "condition": "outline_script_or_story_revision",
+      "from": "doc-showrunner",
+      "relation": "commands",
+      "to": "doc-story-architect"
+    },
+    {
+      "condition": "research_question_or_missing_source",
+      "from": "doc-showrunner",
+      "relation": "commands",
+      "to": "doc-researcher"
+    },
+    {
+      "condition": "footage_needed_for_shot_list",
+      "from": "doc-showrunner",
+      "relation": "commands",
+      "to": "doc-footage-scout"
+    },
+    {
+      "condition": "narrate_build_edl_or_stitch",
+      "from": "doc-showrunner",
+      "relation": "commands",
+      "to": "doc-editor"
+    },
+    {
+      "condition": "check_script_footage_or_cut",
+      "from": "doc-showrunner",
+      "relation": "commands",
+      "to": "doc-fact-checker"
+    },
+    {
+      "condition": "sources_ready_for_outline_or_script",
+      "from": "doc-researcher",
+      "relation": "feeds",
+      "to": "doc-story-architect"
+    },
+    {
+      "condition": "research_complete_or_question_unanswerable",
+      "from": "doc-researcher",
+      "relation": "reports_to",
+      "to": "doc-showrunner"
+    },
+    {
+      "condition": "script_approved_shot_needs_listed",
+      "from": "doc-story-architect",
+      "relation": "hands_off",
+      "to": "doc-footage-scout"
+    },
+    {
+      "condition": "outline_or_script_ready_for_approval",
+      "from": "doc-story-architect",
+      "relation": "reports_to",
+      "to": "doc-showrunner"
+    },
+    {
+      "condition": "footage_fetched_and_reviewed",
+      "constraints": {
+        "max_rounds": 3
+      },
+      "from": "doc-footage-scout",
+      "relation": "hands_off",
+      "to": "doc-editor"
+    },
+    {
+      "condition": "no_licensed_footage_for_a_beat",
+      "from": "doc-footage-scout",
+      "relation": "escalates_to",
+      "to": "doc-showrunner"
+    },
+    {
+      "condition": "every_factual_line_matches_a_source",
+      "constraints": {
+        "max_rounds": 3
+      },
+      "from": "doc-fact-checker",
+      "relation": "verifies",
+      "to": "doc-story-architect"
+    },
+    {
+      "condition": "clip_shows_what_its_receipt_says",
+      "from": "doc-fact-checker",
+      "relation": "verifies",
+      "to": "doc-footage-scout"
+    },
+    {
+      "condition": "picture_never_misleads_the_narration",
+      "from": "doc-fact-checker",
+      "relation": "verifies",
+      "to": "doc-editor"
+    },
+    {
+      "condition": "claim_cannot_be_sourced_or_footage_misleads",
+      "from": "doc-fact-checker",
+      "relation": "escalates_to",
+      "to": "doc-showrunner"
+    },
+    {
+      "condition": "draft_or_final_cut_rendered",
+      "from": "doc-editor",
+      "relation": "reports_to",
+      "to": "doc-showrunner"
+    }
+  ],
+  "genesis_standard": "MNX-GENESIS-v1",
+  "loops": [
+    {
+      "exit_when": "check reports no errors and every factual sentence cites a source that supports it at that strength",
+      "max_iterations": 3,
+      "name": "story-check",
+      "path": [
+        "doc-story-architect",
+        "doc-fact-checker",
+        "doc-story-architect"
+      ]
+    },
+    {
+      "exit_when": "every clip in the shot list is approved in review or replaced",
+      "max_iterations": 2,
+      "name": "footage-check",
+      "path": [
+        "doc-footage-scout",
+        "doc-fact-checker",
+        "doc-footage-scout"
+      ]
+    },
+    {
+      "exit_when": "the draft cut has no picture-narration mismatch and the final stitch passes its full decode",
+      "max_iterations": 2,
+      "name": "picture-lock",
+      "path": [
+        "doc-editor",
+        "doc-fact-checker",
+        "doc-editor"
+      ]
+    }
+  ],
+  "lore": "The unit formed around one rule from an old cutting room: the audience believes what it sees. So nothing goes on screen that the team cannot trace to its source, and nothing is said that the sources do not support. Within that rule, the team chases the best story the evidence will carry.",
+  "max_dispatch_rounds": 10,
+  "mission": "Turn a question into a finished, narrated documentary: a real story with a clear question and earned turns, told over openly licensed public footage, with every claim sourced, every clip credited, and transitions that serve the story.",
+  "mission_charter": "Research, write, source footage for, narrate and stitch documentaries with the Praeco documentary tools. Local drafts only; publishing is a separate decision made by a person.",
+  "officiation": {
+    "enabled": true
+  },
+  "purpose": "Most explainers are either gripping and loose with the truth, or careful and dull. This unit exists to make films that are both: built like stories, checked like reporting.",
+  "schema_version": 1,
+  "state": "draft",
+  "syndicate_id": "syndicate-praeco-documentary-v1"
+}

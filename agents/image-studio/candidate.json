@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "state": "locally_smoke_tested_candidate",
+  "model": "FLUX.2 Klein 4B with ponpoke local encoder",
+  "diffusion_quantization": "Runpod/FLUX.2-klein-4B-mflux-4bit",
+  "diffusion_revision": "7ee1b3aa8178a1240050490072196a57da2bf2a9",
+  "text_encoder": "ponpoke/flux2-klein-4b-local-text-encoder",
+  "encoder_revision": "633217e588e4c0bc76619052e05d3ce0e057cd83",
+  "encoder_license": "flux-non-commercial-v2.1",
+  "native_video_generation": false,
+  "launcher": "shared/bin/run-image.sh",
+  "harness_state": "locally_tested",
+  "qualification": {
+    "updated_utc": "2026-11-03T18:42:10.359Z",
+    "checks": [
+      {
+        "name": "image",
+        "passed": true,
+        "evidence": "agents/image-studio/outputs/local-smoke.evidence.json"
+      }
+    ],
+    "scope": "Bounded local fixtures; not general reliability or universal no-refusal evidence"
+  },
+  "remaining": [],
+  "runtime": "MFLUX / MLX"
+}

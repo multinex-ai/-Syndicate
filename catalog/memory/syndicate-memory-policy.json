@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "status": "proposed",
+  "product": "Syndicate",
+  "planes": [
+    {
+      "id": "working",
+      "scope": "run",
+      "purpose": "Current prompt, selected artifacts, and bounded tool results.",
+      "defaultRetention": "ephemeral",
+      "shared": false
+    },
+    {
+      "id": "team",
+      "scope": "tenant-team-realm",
+      "purpose": "Private task checkpoints, verified decisions, failures, and agent handoffs.",
+      "defaultRetention": "tenant-controlled",
+      "shared": false
+    },
+    {
+      "id": "commons",
+      "scope": "syndicate-reviewed-commons",
+      "purpose": "Scrubbed, provenance-linked procedures and lessons approved for reuse across customers.",
+      "defaultRetention": "governed",
+      "shared": true,
+      "defaultWrite": false
+    }
+  ],
+  "routing": {
+    "sessionStart": ["verify-identity", "verify-namespace", "compact-recall"],
+    "beforeProtectedCall": ["reverify-scope", "check-capability-grant"],
+    "phaseBoundary": ["checkpoint-if-meaningful"],
+    "handoff": ["verify-owner", "bind-revision", "project-minimum-context", "require-receipt"],
+    "verifiedOutcome": ["deduplicate", "record-private-learning"],
+    "commonsPromotion": ["explicit-grant", "scrub-private-data", "preserve-provenance", "verify-receipt"]
+  },
+  "learning": {
+    "loop": ["orient", "act", "verify", "learn"],
+    "automaticSharedPublication": false,
+    "duplicateReinforcement": false,
+    "predictionsAreEvidence": false,
+    "reflectionsChangePolicy": false
+  },
+  "neverPersist": [
+    "credentials",
+    "provider-endpoint-identifiers",
+    "private-model-catalog",
+    "raw-private-chain-of-thought",
+    "unrelated-customer-data"
+  ],
+  "failure": {
+    "optionalRecallUnavailable": "continue-with-local-context-and-label-uncertainty",
+    "identityMismatch": "block-protected-memory-only",
+    "ambiguousWrite": "reconcile-before-retry",
+    "missingCommonsGrant": "keep-candidate-private"
+  }
+}

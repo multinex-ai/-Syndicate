@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "config_kind": "planning_metadata_not_a_runtime_config",
+  "role": "Screenshot-grounded browser navigation",
+  "model": "microsoft/Fara1.5-4B",
+  "quantization_repo": "bartowski/Fara1.5-4B-GGUF",
+  "revision": "b97f335231e01efbbad37bb89b5310340fc10735",
+  "weight_file": "Fara1.5-4B-Q4_K_M.gguf",
+  "weight_bytes": 2884850784,
+  "vision_file": "mmproj-Fara1.5-4B-f16.gguf",
+  "vision_bytes": 672423584,
+  "runtime": "Compatible local vision endpoint plus official Fara harness",
+  "context": 16384,
+  "temperature": 0,
+  "state": "excluded_from_default_package",
+  "remaining": [
+    "Exact chat template and tool parsing",
+    "Mac Metal compatibility",
+    "Local fixture navigation",
+    "Task completion validation"
+  ],
+  "reason": "User requires explicitly local/no-refusal candidates; Fara has deliberate refusal/consent behavior."
+}

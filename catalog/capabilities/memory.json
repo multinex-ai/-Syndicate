@@ -1,0 +1,13 @@
+{
+  "id": "memory",
+  "name": "MemQ Context & Slicing",
+  "description": "Episodic memory, semantic retrieval, plan-state persistence, and context slicing.",
+  "execution_mode": "mcp-service",
+  "tools": ["query_memory", "search_memory", "add_memory", "recent_memory", "save_context", "memory_status", "slicer_slice", "slice_project"],
+  "resource_bounds": {
+    "max_duration_seconds": 60,
+    "min_available_ram_gib": 1.5,
+    "max_worker_rss_gib": 2.0,
+    "max_swap_growth_gib": 1.0
+  }
+}

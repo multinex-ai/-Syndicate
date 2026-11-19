@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "config_kind": "planning_metadata_not_a_runtime_config",
+  "role": "Optional speech input and spoken responses",
+  "model": "Small speech-recognition model plus Kokoro-82M",
+  "runtime": "MLX Audio candidate",
+  "state": "architecture_only",
+  "remaining": [
+    "Select STT checkpoint",
+    "Transcription test",
+    "Speech output test",
+    "Turn-taking and latency"
+  ]
+}

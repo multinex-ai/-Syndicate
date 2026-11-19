@@ -1,0 +1,50 @@
+{
+  "syndicate_id": "starter-studio",
+  "version": "1.0.0",
+  "name": "Local Studio Syndicate",
+  "description": "Provider-neutral starter syndicate for local coding, research, and asset generation on Apple Silicon.",
+  "entry_agent": "studio-lead",
+  "members": [
+    {
+      "id": "studio-lead",
+      "role": "Studio Lead & Coordinator",
+      "instructions": "Decompose tasks, direct specialists, verify evidence, and deliver concise results.",
+      "model_profile_id": "qwen35-9b-local",
+      "capabilities": ["text"],
+      "allowed_tools": ["exec", "apply_patch", "read_file", "write_file", "local_agents_status", "start_local_agent"],
+      "max_turns": 10,
+      "timeout_seconds": 600
+    },
+    {
+      "id": "researcher",
+      "role": "Code & Knowledge Researcher",
+      "instructions": "Investigate files, verify code invariants, query memory, and return concise factual findings.",
+      "model_profile_id": "qwen35-9b-local",
+      "capabilities": ["text", "memory"],
+      "allowed_tools": ["read_file", "exec", "query_memory", "search_memory", "add_memory", "slicer_slice"],
+      "max_turns": 8,
+      "timeout_seconds": 300
+    },
+    {
+      "id": "media-artist",
+      "role": "Visual Media Artist",
+      "instructions": "Generate high-fidelity visual assets using local diffusion models based on creative briefs.",
+      "model_profile_id": "flux2-klein-4b",
+      "capabilities": ["image"],
+      "allowed_tools": ["start_local_agent", "local_agent_job", "local_agent_log"],
+      "max_turns": 5,
+      "timeout_seconds": 300
+    }
+  ],
+  "edges": [
+    { "from": "studio-lead", "to": "researcher", "relation": "delegates_research" },
+    { "from": "researcher", "to": "studio-lead", "relation": "reports_findings" },
+    { "from": "studio-lead", "to": "media-artist", "relation": "requests_media" },
+    { "from": "media-artist", "to": "studio-lead", "relation": "delivers_media" }
+  ],
+  "policy": {
+    "sandbox_mode": "workspace-write",
+    "approval_policy": "on-request",
+    "require_evidence_receipt": true
+  }
+}

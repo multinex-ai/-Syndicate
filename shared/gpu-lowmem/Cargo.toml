@@ -1,0 +1,16 @@
+[package]
+name = "syndicate-gpu-lowmem"
+version = "0.2.0"
+edition = "2021"
+description = "Low-level Metal (objc2-metal), Vulkan (ash), and CUDA driver telemetry, heap aliasing, and low-memory execution planner for Syndicate"
+
+[dependencies]
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.149"
+libc = "0.2.183"
+ash = { version = "0.38", default-features = false, features = ["loaded", "std"] }
+
+[target.'cfg(target_os = "macos")'.dependencies]
+objc2 = "0.6"
+objc2-foundation = "0.3"
+objc2-metal = "0.3"

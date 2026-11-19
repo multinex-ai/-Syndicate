@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-05T09:25:15.383Z",
+  "vision": "Improve useful media quality within this Mac’s resources using only installed weights.",
+  "status": "Both competing media chats checkpointed and rendering paused. Image and video baseline attempts blocked before model loading by warning memory pressure; no new media generated.",
+  "abstract": "Add conservative quality presets, one-image reference editing and phase-wise model release. Evaluate actual outputs and retain failed or blocked attempts.",
+  "owner": "Codex",
+  "spending_authorization": {
+    "downloads": false,
+    "paid_services": false
+  },
+  "experiments": [
+    {
+      "id": "image-draft",
+      "name": "512px low-memory baseline",
+      "output": "evidence/media-quality-20261105/image-draft.png",
+      "status": "admission_blocked",
+      "purpose": "Compare subject detail and requested composition.",
+      "command": "bash shared/bin/run-image.sh 'Generate a detailed studio photograph of a small red robot reading a book beside a blue lamp. Clean composition, high quality, studio lighting.' --preset draft --seed 729 --output evidence/media-quality-20261105/image-draft.png",
+      "last_attempt": "evidence/media-quality-20261105/image-draft.resources.json"
+    },
+    {
+      "id": "image-quality",
+      "name": "768px image quality",
+      "output": "evidence/media-quality-20261104/image-quality.png",
+      "status": "pending",
+      "purpose": "Compare subject detail and requested composition.",
+      "command": "bash shared/bin/run-image.sh 'Generate a detailed studio photograph of a small red robot reading a book beside a blue lamp. Clean composition, high quality, studio lighting.' --preset quality --seed 729 --output evidence/media-quality-20261104/image-quality.png"
+    },
+    {
+      "id": "image-reference",
+      "name": "Reference edit: blue lamp to green",
+      "output": "evidence/media-quality-20261104/image-reference.png",
+      "status": "pending",
+      "purpose": "Compare subject detail and requested composition.",
+      "command": "bash shared/bin/run-image.sh 'A detailed studio photograph of the same small red robot reading the same open book, now beside a green lamp instead of a blue lamp. Preserve the robot, book, background, camera angle and composition.' --preset quality --seed 729 --reference-image evidence/media-quality-20261104/image-quality.png --output evidence/media-quality-20261104/image-reference.png"
+    },
+    {
+      "id": "video-draft",
+      "name": "Short video baseline: 320 × 192",
+      "output": "evidence/media-quality-20261105/video-draft.mp4",
+      "status": "admission_blocked",
+      "purpose": "Establish baseline video generation within memory limits before quality presets.",
+      "command": "bash shared/bin/run-video.sh 'A yellow toy car rolling slowly from left to right on a plain wooden table, natural daylight, fixed camera, steady motion.' --preset draft --seed 729 --output evidence/media-quality-20261105/video-draft.mp4"
+    },
+    {
+      "id": "video-quality",
+      "name": "Short video: 384 × 224",
+      "output": "evidence/media-quality-20261104/video-quality.mp4",
+      "status": "pending",
+      "purpose": "Review temporal consistency, motion and detail.",
+      "command": "bash shared/bin/run-video.sh 'A yellow toy car rolling slowly from left to right on a plain wooden table, natural daylight, fixed camera, steady motion.' --preset quality --seed 729 --output evidence/media-quality-20261104/video-quality.mp4"
+    },
+    {
+      "id": "video-detail-short",
+      "name": "Short video: 512 × 288",
+      "output": "evidence/media-quality-20261104/video-detail-short.mp4",
+      "status": "pending",
+      "purpose": "Review temporal consistency, motion and detail.",
+      "command": "bash shared/bin/run-video.sh 'A yellow toy car rolling slowly from left to right on a plain wooden table, natural daylight, fixed camera, steady motion.' --preset detail-short --seed 729 --output evidence/media-quality-20261104/video-detail-short.mp4"
+    }
+  ],
+  "milestones": [
+    {
+      "name": "Worker and client integration",
+      "status": "implemented; contract tests passed",
+      "acceptance": "Validated presets/reference inputs reach CLI, MCP and coordinator workers."
+    },
+    {
+      "name": "Resource safeguards",
+      "status": "Historical infrastructure checks passed; fresh image and video attempts both blocked before loading on November 5",
+      "acceptance": "Reject low headroom; real owned subprocess exits on critical pressure."
+    },
+    {
+      "name": "Image comparison and reference edit",
+      "status": "pending",
+      "acceptance": "Actual generated PNGs visually reviewed with source hashes and memory samples."
+    },
+    {
+      "name": "Short video comparison",
+      "status": "pending",
+      "acceptance": "Actual MP4s decoded and sampled across time; limits preserved."
+    }
+  ],
+  "validation": "38 infrastructure tests and fresh STDIO MCP checks passed on November 4 (not rerun for this evidence-only update). November 5: real image and video CLI attempts both admission-blocked; 13-sample stability check found no normal-pressure window. No new model inference completed. Rendered report UI remains unverified.",
+  "limitations": "Single-seed demonstrations do not establish general quality. No 1024px image preset or longer/higher-resolution video is enabled. Sampled monitoring can overshoot between checks.",
+  "next_action": "Keep both other media chats paused. Wait for normal macOS pressure and at least 4 GiB available, then retry the 512px image baseline and short-video baseline sequentially. Advance to quality presets/reference editing only after successful bounded baselines. No larger downloads or lower limits.",
+  "memq_checkpoint": {
+    "plan_id": "local-agents-media-quality-20261104",
+    "state_version": 3,
+    "status": "checkpointed",
+    "verified_readback": true
+  },
+  "cleanup_evidence": "evidence/media-quality-20261104/process-review.json",
+  "review_date": "November 5, 2026",
+  "coordination": {
+    "updated_at": "2026-11-05T09:25:15.382Z",
+    "authorization": "Chris authorized checkpointing both chats and pausing rendering before sequential media tests.",
+    "chats": [
+      {
+        "id": "01a19afe-22ef-7c60-9879-d5d9170a3d58",
+        "title": "Assess autonomous income strategies",
+        "status": "checkpoint saved; image/video/audio rendering paused; no owned worker remaining",
+        "evidence": "Praeco/CHECKPOINT.md:76"
+      },
+      {
+        "id": "01a1a86e-ae94-7130-af62-0a5ae46d0e4f",
+        "title": "Document folder hierarchy",
+        "status": "checkpoint saved; image/video/audio rendering paused; no owned worker remaining",
+        "evidence": "Praeco/CHECKPOINT.md:84",
+        "reported_memq_checkpoint": "b6aeef5e-fad4-491f-b15e-27cb3a94ec05"
+      }
+    ],
+    "forced_terminations": 0,
+    "files_deleted": 0,
+    "resume": "Other chats remain paused; no resumption message sent.",
+    "results": {
+      "image": "admission_blocked",
+      "video": "admission_blocked",
+      "stable_window": "13 checks over approximately 60 seconds; all warning pressure; no retry launched"
+    },
+    "artifacts": [
+      "image-draft.resources.json",
+      "video-draft.resources.json",
+      "admission-watch.json"
+    ]
+  },
+  "latest_resource_evidence": "evidence/media-quality-20261105/coordination.json"
+}

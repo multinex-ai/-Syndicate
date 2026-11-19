@@ -1,0 +1,43 @@
+model_catalog_json = "$HOME"
+model = "local-agent"
+model_context_window = 24576
+model_auto_compact_token_limit = 16000
+model_provider = "local_uncensored"
+sandbox_mode = "workspace-write"
+approval_policy = "on-request"
+
+[model_providers.local_uncensored]
+name = "Qwen 3.5 9B Local (Local)"
+base_url = "http://127.0.0.1:18087/v1"
+wire_api = "responses"
+requires_openai_auth = false
+supports_websockets = false
+request_max_retries = 0
+stream_idle_timeout_ms = 1200000
+stream_max_retries = 0
+
+[mcp_servers.local_agent_workers]
+command = "/bin/bash"
+args = ["$HOME"]
+startup_timeout_sec = 30
+tool_timeout_sec = 300
+required = false
+
+[mcp_servers.memq_multinex_local_model]
+command = "/bin/bash"
+args = ["$HOME"]
+startup_timeout_sec = 30
+tool_timeout_sec = 300
+required = false
+
+[features]
+memories = false
+
+[projects."$HOME"]
+trust_level = "trusted"
+
+[skills]
+max_context_tokens = 2500
+
+[tui]
+screen_reader_detection_done = true

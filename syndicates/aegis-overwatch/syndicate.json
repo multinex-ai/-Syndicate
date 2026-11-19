@@ -1,0 +1,112 @@
+{
+  "agent_ids": [
+    "aegis-commander",
+    "osint-sentinel",
+    "recon-cartographer",
+    "vuln-auditor"
+  ],
+  "allowed_hosts_ceiling": [
+    "localhost",
+    "127.0.0.1",
+    "::1",
+    "www.cisa.gov",
+    "nvd.nist.gov",
+    "www.state.gov",
+    "www.defense.gov",
+    "www.maritime.dot.gov",
+    "reuters.com",
+    "apnews.com"
+  ],
+  "allowed_tools_ceiling": [
+    "send_message",
+    "list_workers",
+    "read_file",
+    "write_file",
+    "list_dir",
+    "run_command",
+    "browser_open",
+    "browser_observe",
+    "browser_screenshot",
+    "memq_status",
+    "memq_tools",
+    "memq_call",
+    "builder_propose_model",
+    "builder_propose_agent",
+    "builder_compose_syndicate"
+  ],
+  "coordinator_agent_id": "aegis-commander",
+  "creator_attribution": "Christopher Rijos",
+  "display_name": "Aegis Overwatch",
+  "edges": [
+    {
+      "condition": "current_events_or_advisory_intake",
+      "from": "aegis-commander",
+      "relation": "commands",
+      "to": "osint-sentinel"
+    },
+    {
+      "condition": "authorized_asset_and_sbom_mapping",
+      "from": "aegis-commander",
+      "relation": "commands",
+      "to": "recon-cartographer"
+    },
+    {
+      "condition": "authorized_vulnerability_audit_and_patch",
+      "from": "aegis-commander",
+      "relation": "commands",
+      "to": "vuln-auditor"
+    },
+    {
+      "condition": "correlate_advisory_with_asset_inventory",
+      "from": "osint-sentinel",
+      "relation": "feeds",
+      "to": "recon-cartographer"
+    },
+    {
+      "condition": "verify_and_remediate_prioritized_surface",
+      "constraints": {
+        "max_rounds": 3,
+        "requires_scope_match": true
+      },
+      "from": "recon-cartographer",
+      "relation": "hands_off",
+      "to": "vuln-auditor"
+    },
+    {
+      "condition": "confirm_fix_closes_mapped_exposure",
+      "from": "vuln-auditor",
+      "relation": "verifies",
+      "to": "recon-cartographer"
+    },
+    {
+      "condition": "finding_outside_scope_or_irreversible_fix",
+      "from": "vuln-auditor",
+      "relation": "escalates_to",
+      "to": "aegis-commander"
+    }
+  ],
+  "genesis_standard": "MNX-GENESIS-v1",
+  "loops": [
+    {
+      "exit_when": "the exposure is re-mapped as closed and the remediation test passes",
+      "max_iterations": 3,
+      "name": "close-the-gap",
+      "path": [
+        "recon-cartographer",
+        "vuln-auditor",
+        "recon-cartographer"
+      ]
+    }
+  ],
+  "lore": "Aegis was stood up after a quiet season in which three advisories went unread and one of them mattered. Its charter is short: watch the world, map our own ground, prove every weakness and every fix, and never step outside the ground we are trusted with. Every member keeps a record good enough to hand to the next shift.",
+  "max_dispatch_rounds": 6,
+  "mission": "Keep American people, missions and infrastructure overseas a step ahead of the threats aimed at them: see the danger early, know exactly what is exposed, and close the gap before anyone can use it.",
+  "mission_charter": "Protect American interests and infrastructure overseas through continuous OSINT current-events intake, authorized attack-surface cartography, and isolated penetration-testing vulnerability audits under MNX-AGI v1.4 governance.",
+  "officiation": {
+    "enabled": true
+  },
+  "purpose": "Embassies, ports, field offices and the networks behind them are attacked by people who study them patiently. Aegis exists so that someone studies them first, more patiently, and on their side.",
+  "schema_version": 1,
+  "state": "qualified",
+  "syndicate_id": "syndicate-aegis-overwatch-v1"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "qwen35-9b-local",
+  "name": "Qwen 2.5 Coder 7B Instruct (Local Default)",
+  "description": "General reasoning, coding, and multi-agent coordination model running locally on Apple Silicon Metal, Vulkan, or CUDA via llama.cpp.",
+  "capability": "text",
+  "provider": "llama-cpp",
+  "license": {
+    "name": "Apache-2.0",
+    "url": "https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct",
+    "commercial_use": true,
+    "explicit_acceptance_required": false
+  },
+  "artifacts": [
+    {
+      "filename": "qwen2.5-coder-7b-instruct-q4_k_m.gguf",
+      "source_repo": "Qwen/Qwen2.5-Coder-7B-Instruct-GGUF",
+      "source_url": "https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct-GGUF/resolve/main/qwen2.5-coder-7b-instruct-q4_k_m.gguf",
+      "size_bytes": 4683073952,
+      "required": true
+    }
+  ],
+  "runtime": {
+    "context_size": 24576,
+    "quantization": "Q4_K_M",
+    "recommended_ram_gib": 16.0,
+    "max_swap_growth_gib": 3.0,
+    "batch_size": 256,
+    "ubatch_size": 64,
+    "cache_ram_mb": 1024
+  }
+}

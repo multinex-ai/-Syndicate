@@ -1,0 +1,14 @@
+{
+  "id": "image",
+  "name": "Local Image Synthesis",
+  "description": "On-device photorealistic and stylized image generation with draft and quality presets.",
+  "execution_mode": "local-process",
+  "default_model_profile_id": "flux2-klein-4b",
+  "tools": ["start_local_agent", "local_agent_job", "local_agent_log"],
+  "resource_bounds": {
+    "max_duration_seconds": 300,
+    "min_available_ram_gib": 2.0,
+    "max_worker_rss_gib": 8.0,
+    "max_swap_growth_gib": 3.0
+  }
+}

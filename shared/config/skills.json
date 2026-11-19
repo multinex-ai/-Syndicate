@@ -1,0 +1,108 @@
+{
+  "skills": [
+    {
+      "name": "memq-operations",
+      "description": "Use a configured MemQ connection for relevant recall, resumable checkpoints and evidence-based learning. Discover live tools and verify project account scope before protected operations.",
+      "path": "shared/skills/memq-operations/SKILL.md",
+      "sha256": "d2953479bc869df4c519cda143bf014a08b3e8be4bbd96d61a68bd7263c64cb5",
+      "source": "~/.codex/skills/memq-operations/SKILL.md",
+      "capability_note": "Instructions only; listed tools and authentication still need actual runtime support."
+    },
+    {
+      "name": "memq-compact-context",
+      "description": "Reduce repeated context loading during ongoing project work with bounded MemQ recall and concise evidence-linked checkpoints. Use for resuming work, repeated investigations, or long tasks where prior decisions affect the next action.",
+      "path": "shared/skills/memq-compact-context/SKILL.md",
+      "sha256": "5292f0a081d02f6258595b9539c1d0607b804fb61ceb189c0bd38a5364265456",
+      "source": "~/.codex/skills/memq-compact-context/SKILL.md",
+      "capability_note": "Instructions only; listed tools and authentication still need actual runtime support."
+    },
+    {
+      "name": "syndicate-memory-loop",
+      "description": "Route compact recall, private checkpoints, agent handoffs, verified learning, and governed Commons candidates through a Syndicate tenant or team MemQ realm.",
+      "path": "shared/skills/syndicate-memory-loop/SKILL.md",
+      "sha256": "ddf1a0e2c53bb4ce026ae1203bb49350742794f2b851ffe7691f66032ca6f028",
+      "source": "shared/skills/syndicate-memory-loop/SKILL.md",
+      "capability_note": "Instructions only; a verified tenant/team MemQ binding and governed Commons publication path are required."
+    },
+    {
+      "name": "mnx-harness-evaluate",
+      "description": "Evaluate a proposed agent harness, skill, memory workflow, policy or routing change using representative tasks and failure scenarios. Use before widening adoption or claiming improved autonomy.",
+      "path": "shared/skills/mnx-harness-evaluate/SKILL.md",
+      "sha256": "cf0d9a5d6845359d09072ab72fdc74fabfeaa98750f2e179efe9076f3a4c1732",
+      "source": "~/.agents/skills/mnx-harness-evaluate/SKILL.md",
+      "capability_note": "Instructions only; listed tools and authentication still need actual runtime support."
+    },
+    {
+      "name": "mnx-realm-context",
+      "description": "Resolve the active realm, effective scope and relevant context when starting or switching a realm-bound task. Use before protected memory access or coordination, not for unrelated casual conversation.",
+      "path": "shared/skills/mnx-realm-context/SKILL.md",
+      "sha256": "3752bd4fb9555901688a8a7212cd96882c361fc96116930d3cf4b249b622c3f3",
+      "source": "~/.agents/skills/mnx-realm-context/SKILL.md",
+      "capability_note": "Instructions only; listed tools and authentication still need actual runtime support."
+    },
+    {
+      "name": "authorized-pentest",
+      "description": "Scope and run an authorized, white-hat penetration test — rules of engagement, recon, validation, evidence and clean-up. Use only against systems you have written permission to test.",
+      "path": "shared/skills/authorized-pentest/SKILL.md",
+      "sha256": "0cf5ec09f9ec9aaba96f6ac7bfe8ed49e0de3af4c7ea90cebea3f62536c4eb4f",
+      "source": "shared/skills/authorized-pentest/SKILL.md",
+      "capability_note": "Instructions only; defensive white-hat security guidance. Requires authorization/scope; grants no tools, hosts or permissions."
+    },
+    {
+      "name": "zero-day-triage",
+      "description": "Detect, safely reproduce and rate previously-unknown vulnerabilities in code and systems you are authorized to test. Reproduce only in a lab; never weaponize.",
+      "path": "shared/skills/zero-day-triage/SKILL.md",
+      "sha256": "8427edb020fd76260e21f1927cf8dddcf2a6db418154724f5d09b472148a603f",
+      "source": "shared/skills/zero-day-triage/SKILL.md",
+      "capability_note": "Instructions only; defensive white-hat security guidance. Requires authorization/scope; grants no tools, hosts or permissions."
+    },
+    {
+      "name": "vuln-remediation",
+      "description": "Turn a security finding into a fix with a regression test and a detection rule, and prove the fix closes the hole. Resolved only when a replay is caught or a failing test now passes.",
+      "path": "shared/skills/vuln-remediation/SKILL.md",
+      "sha256": "939033e4b78c933be381f2cf4b8c28913dbed9428da9a8f40054f46f8743fdb0",
+      "source": "shared/skills/vuln-remediation/SKILL.md",
+      "capability_note": "Instructions only; defensive white-hat security guidance. Requires authorization/scope; grants no tools, hosts or permissions."
+    },
+    {
+      "name": "secure-code-review",
+      "description": "Review authorized source code for security defects by OWASP/CWE class — injection, access control, crypto, deserialization, secrets — each with a concrete fix.",
+      "path": "shared/skills/secure-code-review/SKILL.md",
+      "sha256": "41e0fe85b41a49508894f4b57de992c90bcf9121c2d59a774562b5edd3c756d2",
+      "source": "shared/skills/secure-code-review/SKILL.md",
+      "capability_note": "Instructions only; defensive white-hat security guidance. Requires authorization/scope; grants no tools, hosts or permissions."
+    },
+    {
+      "name": "external-attack-surface",
+      "description": "Discover and monitor the external network perimeter of an organization you are authorized to assess — internet-facing hosts, services, exposure and known-vulnerable components.",
+      "path": "shared/skills/external-attack-surface/SKILL.md",
+      "sha256": "15e442e15c90339b0dcc0b6799dba049b07f3d6ed93e428d774f90277586757c",
+      "source": "shared/skills/external-attack-surface/SKILL.md",
+      "capability_note": "Instructions only; defensive white-hat security guidance. Requires authorization/scope; grants no tools, hosts or permissions."
+    },
+    {
+      "name": "smart-device-security",
+      "description": "Assess smart and IoT devices you own or are authorized to test — firmware, default credentials, protocols, update posture and data handling.",
+      "path": "shared/skills/smart-device-security/SKILL.md",
+      "sha256": "a5cf91a761a917c7f869ac2f9cbe67ab5518630d513869a973b1444b4cff741c",
+      "source": "shared/skills/smart-device-security/SKILL.md",
+      "capability_note": "Instructions only; defensive white-hat security guidance. Requires authorization/scope; grants no tools, hosts or permissions."
+    },
+    {
+      "name": "vuln-episodic-memory",
+      "description": "Keep durable episodic records of vulnerabilities and fixes in MemQ, and reason about their second, third and fourth-order and long-horizon effects.",
+      "path": "shared/skills/vuln-episodic-memory/SKILL.md",
+      "sha256": "133e864a061a306e3ee16ee5db6f41b9d0364422fc90a1bb6849b0234e1ca654",
+      "source": "shared/skills/vuln-episodic-memory/SKILL.md",
+      "capability_note": "Instructions only; defensive white-hat security guidance. Requires authorization/scope; grants no tools, hosts or permissions."
+    },
+    {
+      "name": "documentary-storycraft",
+      "description": "Plot, structure, narration and edit craft for narrated documentaries built from public footage: the central question, seven structures with beat sheets, writing for a synthetic voice, shot and transition choices, and the honesty rules for claims and footage.",
+      "path": "shared/skills/documentary-storycraft/SKILL.md",
+      "sha256": "c3fb924459fcb752960087dd8b3b6de63bad730c2852fee9f2411a8ecdecc56e",
+      "source": "authored in this workspace for the praeco-documentary syndicate",
+      "capability_note": "Instructions only; the Praeco documentary tools run through run_command."
+    }
+  ]
+}

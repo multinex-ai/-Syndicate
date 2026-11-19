@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "service": "syndicate-cloud",
+  "disclosure": "public",
+  "capabilities": [
+    {
+      "id": "creative-director",
+      "version": "v1",
+      "kind": "text",
+      "description": "Develops scenes, scripts, briefs, and production-ready prompts for other capabilities.",
+      "input": ["text", "image-reference", "video-reference"],
+      "output": ["text", "structured-brief"],
+      "execution": "synchronous",
+      "toolAuthority": "harness-only"
+    },
+    {
+      "id": "cyber-lab",
+      "version": "v1",
+      "kind": "text",
+      "description": "Analyzes authorized attack paths, vulnerability surfaces, exploit hypotheses, and remediation evidence.",
+      "input": ["text", "code", "workspace-evidence"],
+      "output": ["text", "structured-findings", "tool-requests"],
+      "execution": "synchronous",
+      "toolAuthority": "harness-only"
+    },
+    {
+      "id": "image-generate",
+      "version": "v1",
+      "kind": "image",
+      "description": "Creates an image from a creative brief.",
+      "input": ["text"],
+      "output": ["image"],
+      "execution": "asynchronous",
+      "toolAuthority": "none"
+    },
+    {
+      "id": "image-transform",
+      "version": "v1",
+      "kind": "image",
+      "description": "Transforms one or more supplied images using a creative brief.",
+      "input": ["text", "image"],
+      "output": ["image"],
+      "execution": "asynchronous",
+      "toolAuthority": "none"
+    },
+    {
+      "id": "video-generate",
+      "version": "v1",
+      "kind": "video",
+      "description": "Creates a video from text and optional visual references.",
+      "input": ["text", "image-reference"],
+      "output": ["video"],
+      "execution": "asynchronous",
+      "toolAuthority": "none"
+    },
+    {
+      "id": "video-transform",
+      "version": "v1",
+      "kind": "video",
+      "description": "Restyles, edits, or extends a supplied video from a structured brief.",
+      "input": ["text", "video"],
+      "output": ["video"],
+      "execution": "asynchronous",
+      "toolAuthority": "none"
+    },
+    {
+      "id": "voice",
+      "version": "v1",
+      "kind": "audio",
+      "description": "Creates spoken audio from a script and voice direction.",
+      "input": ["text", "audio-reference"],
+      "output": ["audio"],
+      "execution": "asynchronous",
+      "toolAuthority": "none"
+    },
+    {
+      "id": "sound-design",
+      "version": "v1",
+      "kind": "audio",
+      "description": "Creates sound effects and ambience from a production brief.",
+      "input": ["text", "video-reference"],
+      "output": ["audio"],
+      "execution": "asynchronous",
+      "toolAuthority": "none"
+    },
+    {
+      "id": "music",
+      "version": "v1",
+      "kind": "audio",
+      "description": "Creates music from lyrics, structure, mood, and production direction.",
+      "input": ["text", "audio-reference"],
+      "output": ["audio"],
+      "execution": "asynchronous",
+      "toolAuthority": "none"
+    }
+  ],
+  "nonDisclosure": {
+    "consumerSelectableModels": false,
+    "providerMetadataReturned": false,
+    "rawUpstreamErrorsReturned": false,
+    "routingPolicyReturned": false
+  }
+}

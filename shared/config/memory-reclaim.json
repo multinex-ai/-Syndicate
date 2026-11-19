@@ -1,0 +1,16 @@
+{
+  "apps": [
+    "ChatGPT"
+  ],
+  "auto_largest": false,
+  "confirm": true,
+  "enabled": false,
+  "min_app_mb": 200,
+  "never": [
+    "Antigravity"
+  ],
+  "note": "Automatic memory cleanup disabled by owner request November 16, 2026. No automatic application quitting.",
+  "quit_timeout_seconds": 20,
+  "restore_after": true,
+  "target_available_gib": 4
+}

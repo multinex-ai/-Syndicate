@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Syndicate — terminal runtime for cooperating AI agents.
+set -euo pipefail
+
+SOURCE="${BASH_SOURCE[0]}"
+while [[ -h "$SOURCE" ]]; do
+  BIN_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$BIN_DIR/$SOURCE"
+done
+BIN_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+REPO_ROOT="$(cd "$BIN_DIR/.." && pwd)"
+
+export MNX_WORKSPACE="${SYNDICATE_WORKSPACE:-${MNX_WORKSPACE:-$PWD}}"
+exec node "$REPO_ROOT/shared/harness/tui.mjs" "$@"

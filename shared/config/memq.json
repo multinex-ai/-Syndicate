@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "enabled": true,
+  "server_url": "https://mcp.multinex.ai/mcp/v1",
+  "expected_account": "maintainer@example.com",
+  "expected_namespace_organization": "multinex.ai",
+  "client_name": "Local Agents on this Mac",
+  "realm": "local-agents-non-tf",
+  "excluded_project_roots": [
+    "$HOME",
+    "$HOME"
+  ],
+  "authentication": "independent OAuth authorization-code PKCE; no imported client tokens",
+  "binding": {
+    "source": "own-client-private-binding"
+  },
+  "allowed_tools": [
+    "query_memory",
+    "add_memory",
+    "plan_state_read",
+    "plan_state_write",
+    "plan_state_checkpoint"
+  ],
+  "state": "own_oauth_and_authoritative_binding_configured"
+}

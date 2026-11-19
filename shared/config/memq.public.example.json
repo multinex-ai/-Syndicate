@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "enabled": false,
+  "service_url": "https://memory.example.invalid/mcp",
+  "authentication": "syndicate-device-identity",
+  "binding": {
+    "expected_principal": "resolved-after-login",
+    "expected_namespace": "tenant-or-team-realm-from-entitlement",
+    "expected_realm": "workspace-realm-from-client"
+  },
+  "commons": {
+    "discovery": "optional",
+    "default_access": "read-only",
+    "promotion": "explicit-governed-grant"
+  },
+  "required_capabilities": [
+    "identity-handshake",
+    "compact-recall",
+    "checkpoint",
+    "handoff"
+  ],
+  "optional_capabilities": [
+    "verified-learning",
+    "commons-search",
+    "commons-publication"
+  ],
+  "failure_policy": {
+    "missing_private_binding": "block-protected-memory-only",
+    "optional_recall_unavailable": "continue-with-local-context",
+    "commons_fallback": "never"
+  }
+}

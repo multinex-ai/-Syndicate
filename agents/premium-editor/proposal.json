@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "role": "premium-editor",
+  "state": "review_only_not_registered_with_runtime",
+  "enabled": false,
+  "model": "HauhauCS/Qwen3.5-9B-Local-HauhauCS-Aggressive",
+  "model_source": "agents/coordinator/config.json",
+  "purpose": "Draft neutral source-linked reporting and non-explicit creator membership copy for human review",
+  "tools": [],
+  "network": false,
+  "publish": false,
+  "payments": false,
+  "media_generation": false,
+  "training": false,
+  "creator_approval_required": true,
+  "owner_launch_approval_required": true,
+  "allowed_content": ["neutral news summaries", "non-explicit behind-the-scenes captions", "membership FAQs", "source and rights checklists"],
+  "excluded_content": ["explicit sexual content", "gambling promotion", "winning predictions", "unsolicited outreach", "unlicensed republication"],
+  "integration_blockers": ["Existing launcher currently accepts four hardcoded roles; this proposal is not executable through it", "Commercial model and component license review", "Creator identity, content rights and consent documentation", "Approval workflow and scoped runtime adapter not integrated"],
+  "existing_media_candidates": {
+    "image": {"config": "agents/image-studio/config.json", "enabled": false, "reason": "Not connected; README flags non-commercial encoder terms requiring review"},
+    "video": {"config": "agents/video-studio/config.json", "enabled": false, "reason": "Not connected or commercially qualified for this service"}
+  }
+}

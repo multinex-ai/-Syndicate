@@ -1,0 +1,25 @@
+{
+  "id": "flux2-klein-4b",
+  "name": "FLUX.2 Klein 4B (MLX)",
+  "description": "Fast, high-fidelity local image generation optimized for Apple Silicon unified memory.",
+  "capability": "image",
+  "provider": "mlx-image",
+  "license": {
+    "name": "Black Forest Labs Non-Commercial / Research",
+    "url": "https://huggingface.co/black-forest-labs/FLUX.1-schnell",
+    "commercial_use": false,
+    "explicit_acceptance_required": true
+  },
+  "artifacts": [
+    {
+      "filename": "flux2-klein-4b-mlx",
+      "source_repo": "mlx-community/FLUX.2-klein-4b",
+      "size_bytes": 4823449600,
+      "required": true
+    }
+  ],
+  "runtime": {
+    "recommended_ram_gib": 16.0,
+    "max_swap_growth_gib": 3.0
+  }
+}

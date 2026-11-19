@@ -1,0 +1,28 @@
+# Build & runtime outputs
+target/
+/target/
+**/node_modules/
+dist/
+runs/
+shared/models/
+shared/runtime/
+shared/vendor/
+agents/*/workspace/
+agents/*/inbox/
+agents/*/outputs/
+syndicates/*/agents/*/workspace/
+syndicates/*/agents/*/inbox/
+syndicates/*/.history/
+
+# Local secrets & environment files
+.env
+.env.*
+*.key
+*.pem
+*.enc
+
+# OS & Python cache
+.DS_Store
+*.log
+__pycache__/
+*.pyc

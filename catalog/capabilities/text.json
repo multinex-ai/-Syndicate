@@ -1,0 +1,14 @@
+{
+  "id": "text",
+  "name": "Text Reasoning & Coding",
+  "description": "General natural language reasoning, code synthesis, shell planning, and tool dispatch.",
+  "execution_mode": "local-metal",
+  "default_model_profile_id": "qwen35-9b-local",
+  "tools": ["exec", "apply_patch", "read_file", "write_file", "local_agents_status", "start_local_agent"],
+  "resource_bounds": {
+    "max_duration_seconds": 600,
+    "min_available_ram_gib": 2.0,
+    "max_worker_rss_gib": 8.0,
+    "max_swap_growth_gib": 3.0
+  }
+}
